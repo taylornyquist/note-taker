@@ -60,7 +60,7 @@ app.get('/notes', (req, res) => {
 
 app.get('/api/notes', (req, res) => {
     let results = db;
-    console.log(results);
+    // console.log(results);
     res.json(results);
 });
 
@@ -79,6 +79,39 @@ app.post('/api/notes', (req, res) => {
         const newNote = createNewNote(req.body, db);
         res.json(newNote);
     }
+});
+
+// Deletes a note with specific id
+app.delete('/api/notes/:id', function (req, res) {
+
+    // receive query parameter containing ID of the note to delete
+    noteId = req.params.id;
+    // console.log(noteId);
+
+    // fs read the entire db.json file
+    notesData = fs.readFileSync('./db/db.json');
+
+    // parse the data to get an array of objects
+    notesData = JSON.parse(notesData);
+
+    // filter and delete requested note from array of objects
+    notesData = notesData.filter(function(note) {
+        return note.id != noteId;
+    });
+
+    // stringify the array of objects so it can be written as JSON
+    notesData = JSON.stringify(notesData);
+    console.log(notesData);
+
+    fs.writeFile('./db/db.json', notesData, (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+    });
+
+    // parse and send back to client side
+    res.send(JSON.parse(notesData));
+
+    console.log("Deleted note with ID " + req.params.id);
 });
 
 
