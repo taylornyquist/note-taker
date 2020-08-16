@@ -2,14 +2,14 @@
 * A simple application to take and store notes.  Notes persist and may be deleted.
 
 ## Description
-* This is a backend 
+* This is a front end application that interacts with the user to create, store and delete notes with a title and a body.  The front end communicates with the back end Express.js server to run GET, POST and DELETE API routes as well as handling the HTML routes.
 
 ## Links
-* https://github.com/taylornyquist/note-taker
-
+* [Heroku Live Server Link](https://guarded-headland-65223.herokuapp.com/)
+* [GitHub Repo Link](https://github.com/taylornyquist/note-taker)
 * [Link to Video](https://drive.google.com/file/d/1G-w3Ua4BUM5QDyMfq8Pah3PYd8JFhWRg/view)
 
-<img src="./src/screen-shot1.png" alt="" />
+<img src="./public/assets/images/screen-shot1.png" alt="" />
 
 ## Table of Contents
 
