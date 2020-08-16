@@ -12,10 +12,10 @@ const uniqid = require('uniqid');
 // console.log(uniqid());
 // console.log(uniqid(), uniqid());
 
-function createNewNote(body, db) {
+function createNewNote(body, notesData) {
     // console.log(body);
     const newNote = body;
-    db.push(newNote);
+    notesData.push(newNote);
 
     // writes to our db.json file after we push new object to the array
     // fs.writeFileSync() is the synchronous version of fs.writeFile() and doesn't require a callback.  Its good for writing small files
@@ -23,7 +23,7 @@ function createNewNote(body, db) {
         // the path.join() method is used to join the value of __dirname, which represents the directory of the file we execute the code in
         path.join(__dirname, '/db/db.json'),
         // saves the JS array data as JSON.  Null argument means we don't want to edit any of our existing data.  The 2 indicates we want to create white space between our values to make it more readable.
-        JSON.stringify(db, null, 2)
+        JSON.stringify(notesData, null, 2)
     );
 
     // return finished code to post route for response
@@ -59,8 +59,9 @@ app.get('/notes', (req, res) => {
 });
 
 app.get('/api/notes', (req, res) => {
-    let results = db;
-    // console.log(results);
+    let results = fs.readFileSync('./db/db.json');
+    results = JSON.parse(results);
+    console.log(results);
     res.json(results);
 });
 
@@ -69,6 +70,8 @@ app.get('*', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
+    let notesData = JSON.parse(fs.readFileSync('./db/db.json'));
+
     // set id based on what the next index of the array will be
     req.body.id = uniqid();
 
@@ -76,43 +79,40 @@ app.post('/api/notes', (req, res) => {
     if (!validateNote(req.body)) {
         res.status(400).send('The note is not properly formatted.');
     } else {
-        const newNote = createNewNote(req.body, db);
+        const newNote = createNewNote(req.body, notesData);
         res.json(newNote);
     }
 });
 
-// Deletes a note with specific id
-app.delete('/api/notes/:id', function (req, res) {
+// Deletes a note with specific ID
+app.delete('/api/notes/:id', (req, res) => {
 
     // receive query parameter containing ID of the note to delete
     noteId = req.params.id;
     // console.log(noteId);
 
     // fs read the entire db.json file
-    notesData = fs.readFileSync('./db/db.json');
+    let notesData = fs.readFileSync('./db/db.json');
 
     // parse the data to get an array of objects
     notesData = JSON.parse(notesData);
 
     // filter and delete requested note from array of objects
-    notesData = notesData.filter(function(note) {
+    notesData = notesData.filter(note => {
         return note.id != noteId;
     });
 
     // stringify the array of objects so it can be written as JSON
-    notesData = JSON.stringify(notesData);
-    console.log(notesData);
+    notesData = JSON.stringify(notesData, null, 2)
+    // console.log(notesData);
 
-    // fs.writeFile('./db/db.json', notesData, (err) => {
-    //     if (err) throw err;
-    //     console.log('The file has been saved!');
-    // });
+    // re-write the new db.json data without the deleted note
     fs.writeFileSync('./db/db.json', notesData);
+
+    console.log("Deleted note with ID " + req.params.id);
 
     // parse and send back to client side
     res.send(JSON.parse(notesData));
-
-    console.log("Deleted note with ID " + req.params.id);
 });
 
 

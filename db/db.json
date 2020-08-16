@@ -1,52 +1,17 @@
 [
-    {
-        "title": "Test Title",
-        "text": "Test text",
-        "id": "test_id1"
-    },
-    {
-        "title": "Note Title",
-        "text": "Note Text",
-        "id": "test_id2"
-    },
-    {
-        "title": "Reminder",
-        "text": "Take out trash and recycling",
-        "id": "test_id3"
-    },
-    {
-        "title": "test",
-        "text": "1234",
-        "id": 12345
-    },
-    {
-        "title": "asdf",
-        "text": "asdf",
-        "id": "41tdog8b8kdwqkzud"
-    },
-    {
-        "title": "test5",
-        "text": "five",
-        "id": "41tdogakjkdwrpe7l"
-    },
-    {
-        "title": "new test",
-        "text": "new1234",
-        "id": "41tdogdkekdwszti3"
-    },
-    {
-        "title": "test 7",
-        "text": "777",
-        "id": "41tdogdkekdwt0ahh"
-    },
-    {
-        "title": "suckit",
-        "text": "now",
-        "id": "41tdogdkekdwt1set"
-    },
-    {
-        "title": "im done",
-        "text": "right now yup",
-        "id": "41tdogdkekdwt4e3c"
-    }
+  {
+    "title": "test 1",
+    "text": "testtest",
+    "id": "41tdogov2kdxpvirx"
+  },
+  {
+    "title": "test 3",
+    "text": "test test",
+    "id": "41tdogov2kdxpvrxj"
+  },
+  {
+    "title": "test 4",
+    "text": "teste",
+    "id": "41tdogov2kdxpvyh6"
+  }
 ]
