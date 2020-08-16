@@ -103,10 +103,11 @@ app.delete('/api/notes/:id', function (req, res) {
     notesData = JSON.stringify(notesData);
     console.log(notesData);
 
-    fs.writeFile('./db/db.json', notesData, (err) => {
-        if (err) throw err;
-        console.log('The file has been saved!');
-    });
+    // fs.writeFile('./db/db.json', notesData, (err) => {
+    //     if (err) throw err;
+    //     console.log('The file has been saved!');
+    // });
+    fs.writeFileSync('./db/db.json', notesData);
 
     // parse and send back to client side
     res.send(JSON.parse(notesData));
