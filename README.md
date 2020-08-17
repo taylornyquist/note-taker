@@ -7,15 +7,15 @@
 ## Links
 * [Heroku Live Server Link](https://guarded-headland-65223.herokuapp.com/)
 * [GitHub Repo Link](https://github.com/taylornyquist/note-taker)
-* [Link to Video](https://drive.google.com/file/d/1G-w3Ua4BUM5QDyMfq8Pah3PYd8JFhWRg/view)
+* [Link to Video](https://drive.google.com/file/d/1X4iDYOq_6Gii7T_ZCzeEGn8lCjA6uAGn/view)
 
 <img src="./public/assets/images/screen-shot1.png" alt="" />
+<img src="./public/assets/images/screen-shot2.png" alt="" />
 
 ## Table of Contents
 
 * [Usage](#usage)
 * [Installation](#installation)
-* [Tests](#tests)
 * [Run](#run)
 * [Technology](#technology)
 * [Questions](#questions)
@@ -26,21 +26,20 @@ Go to GitHub to clone the repo on your machine.
 
 ## Installation
 To install necessary dependencies, run the following command:
-
 ```
-npm install inquirer & npm install --save-dev jest
+npm init
 ```
-
-## Tests
-To run tests, execute the following command:
 ```
-npm run test
+npm install express
+```
+```
+npm install uniqid
 ```
 
 ## Run
-To run the application, execute the folloing command:
+To run the application as local host, run:
 ```
-node index.js
+npm start
 ```
 
 ## Technology
@@ -48,8 +47,8 @@ This application used the following technology:
 
 * JavaScript
 * Node.js
-* Inquirer
-* Jest
+* Express.js
+* Uniqid
 * CSS
 * HTML
 

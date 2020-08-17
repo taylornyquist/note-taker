@@ -61,7 +61,7 @@ app.get('/notes', (req, res) => {
 app.get('/api/notes', (req, res) => {
     let results = fs.readFileSync('./db/db.json');
     results = JSON.parse(results);
-    console.log(results);
+    // console.log(results);
     res.json(results);
 });
 
